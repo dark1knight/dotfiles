@@ -11,6 +11,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'powerline/powerline'
+Plugin 'tpope/vim-fireplace'
 
 call vundle#end()
 filetype plugin indent on
