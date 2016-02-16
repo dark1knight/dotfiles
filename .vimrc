@@ -4,10 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'wting/rust.vim'
-"Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
-"Plugin 'derekwyatt/vim-scala'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdcommenter'
@@ -16,6 +13,7 @@ Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Valloric/YouCompleteMe'
 
 " color schemes
 Plugin 'tomasr/molokai'
@@ -47,6 +45,11 @@ set smartcase
 set incsearch " search as chars are entered
 set hlsearch " highlight matches
 
+function! ClangFormat()
+    let l:lines="all"
+    pyf ~/bin/clang-format.py
+endfunction
+
 nnoremap <C-TAB> :tabn<CR>
 
 " airline config
@@ -73,10 +76,13 @@ nnoremap <left> :bprev<CR>
 " other key bindings
 nnoremap <space>o :CtrlP<CR>
 nnoremap <F3> :set hlsearch!<CR>
+nnoremap <C-k> :call ClangFormat()<CR>
 
 
 augroup vimrc
     au BufWritePost .vimrc so $MYVIMRC
 augroup END
 
+" ycm configuration
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py"
 
